@@ -6,6 +6,8 @@
 
 *Claude cowork plugin + HTTP REST backend. Quattro skill MVP che orchestrano una sessione di lavoro intellettuale assistito da AI sotto governance esplicita: dichiarazione assunzioni, mappa autorità, citazioni grounding, decision_log append-only, output con provenance.*
 
+> **Posizione strategica.** MHC è uno dei tre prodotti del brand ombrello **RegIA**, insieme a **BeccarIA** (skill legali per l'avvocato italiano nell'ecosistema legal-AI open source) e **Recode IT** (pseudonimizzazione web standalone). I tre moduli sono plug-and-play: ciascuno standalone o combinabili a stack. MHC è il harness governance, applicabile cross-dominio, per chi usa AI in tasks intellettuali ad alta responsabilità.
+
 ---
 
 ## Cosa è MHC
