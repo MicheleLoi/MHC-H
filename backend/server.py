@@ -6,18 +6,15 @@ Replaces the MCP-protocol transport layer of the original MHC-L mcp_server
 package with pure HTTP REST over Starlette. Business logic (template
 rendering, audit signature, SQLite schema) is shared with MHC-L.
 
-Routes (in middleware order — paths under skip_path_prefixes bypass auth):
+Signup + Stripe webhook are NOT mounted on this server. Bearer keys are
+issued by the MHC-L production signup flow at https://mhc.micheleloi.pro/
+(POST /signup/create-checkout-session + /webhooks/stripe), and the same
+key authenticates both MHC-L MCP tool calls and the mhc-cowork REST API
+below. The shared DB is /root/.mhc-l-keystore.db on the VPS (set via env
+MHC_API_DB_PATH). signup_handler.py + webhook_handler.py remain in source
+for future paid-tier activation but are not wired into routes.
 
-  /webhooks/stripe              [bare ASGI]  Stripe webhook delivery
-                                              (signature-verified; not active
-                                               in free-tier MVP).
-  /signup/create-checkout-session
-                                [bare ASGI]  Free-tier issuance + paid
-                                              Checkout creation.
-  /signup/welcome/<token>       [bare ASGI]  One-time bearer + install URL
-                                              reveal.
-
-  --- Bearer-auth-protected ---
+Routes (Bearer-auth-protected via BearerAuthMiddleware):
 
   /api/sessions                 [POST]       Open a session.
   /api/sessions/{sid}           [GET]        Read a session (ownership-scoped).
@@ -34,13 +31,10 @@ Run:
   python -m backend.server --port 9000       # custom port
 
 Env vars (see README.md for details):
-  MHC_API_DB_PATH                  SQLite path (default ~/.mhc-cowork-keystore.db)
-  RESEND_API_KEY                   Free-tier welcome email + paid-tier email
-  STRIPE_SECRET_KEY                Paid tier only (post-MVP)
-  STRIPE_WEBHOOK_SECRET            Paid tier webhooks (post-MVP)
-  MHC_API_BASE_URL                 Public base URL — used to build welcome URLs
-  MHC_MARKETPLACE                  Override marketplace coordinate
-  MHC_PLUGIN_NAME                  Override plugin name
+  MHC_API_DB_PATH                  SQLite path (default ~/.mhc-cowork-keystore.db
+                                                 — on VPS set to MHC-L canonical
+                                                 /root/.mhc-l-keystore.db for
+                                                 shared-key access)
 """
 
 from __future__ import annotations
@@ -49,20 +43,13 @@ import argparse
 import sys
 
 from starlette.applications import Starlette
-from starlette.routing import Mount, Route
+from starlette.routing import Route
 
 from .auth import BearerAuthMiddleware
 from .db import init_db
 from .endpoints.artifacts import create_artifact
 from .endpoints.decisions import create_decision, list_decisions
 from .endpoints.sessions import create_session, end_session, get_session
-from .signup_handler import (
-    SIGNUP_CHECKOUT_PATH,
-    SIGNUP_WELCOME_PREFIX,
-    signup_endpoint,
-    welcome_endpoint,
-)
-from .webhook_handler import WEBHOOK_PATH, stripe_webhook_endpoint
 
 
 # ---------------------------------------------------------------------------
@@ -73,20 +60,14 @@ def build_app() -> Starlette:
     """Build the Starlette ASGI app with Bearer middleware wired in."""
     # init_db is also called lazily by every handler, but doing it once at
     # startup makes the schema's existence visible in logs and surfaces any
-    # path/permissions misconfiguration immediately.
+    # path/permissions misconfiguration immediately. Creates mhc-cowork
+    # governance tables (lawyer_sessions, decisions, artifacts) alongside
+    # the existing MHC-L tables (applications, api_keys, stripe_events_processed)
+    # via CREATE TABLE IF NOT EXISTS — no collision on shared DB.
     db_path = init_db()
     print(f"[server] SQLite DB initialized at {db_path}", file=sys.stderr)
 
     routes = [
-        # Bare ASGI mounts for paths the middleware skips (Stripe webhook,
-        # self-service signup). Mount accepts any ASGI3 app, including our
-        # raw handlers.
-        Mount(WEBHOOK_PATH, app=stripe_webhook_endpoint),
-        Mount(SIGNUP_CHECKOUT_PATH, app=signup_endpoint),
-        # Welcome URL is /signup/welcome/<token> — Mount with the prefix and
-        # the handler reads the token from scope["path"].
-        Mount(SIGNUP_WELCOME_PREFIX.rstrip("/"), app=welcome_endpoint),
-
         # REST endpoints (Bearer-auth-protected).
         Route("/api/sessions", create_session, methods=["POST"]),
         Route("/api/sessions/{sid}", get_session, methods=["GET"]),
@@ -99,10 +80,9 @@ def build_app() -> Starlette:
     starlette_app = Starlette(routes=routes)
 
     # Wrap with Bearer middleware. Outermost callable receives the request
-    # first, so auth runs before Starlette routing. The middleware path-skips
-    # /webhooks/stripe and /signup (covers both create-checkout-session and
-    # welcome/<token>).
-    asgi_app = BearerAuthMiddleware(starlette_app)
+    # first, so auth runs before Starlette routing. No path-skips needed on
+    # this server — signup + webhook live on the MHC-L production endpoint.
+    asgi_app = BearerAuthMiddleware(starlette_app, skip_path_prefixes=())
     return asgi_app
 
 
@@ -132,7 +112,7 @@ def main() -> None:
     args = parse_args()
     print(
         f"[server] mhc-cowork listening on http://{args.host}:{args.port} "
-        f"(Bearer auth enabled, skip_paths=/webhooks/stripe + /signup)",
+        f"(Bearer auth enabled, all routes protected — signup via MHC-L)",
         file=sys.stderr,
     )
     uvicorn.run(
