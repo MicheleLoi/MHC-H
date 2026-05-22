@@ -1,0 +1,37 @@
+mhc-cowork
+==========
+
+Copyright (C) 2026 Michele Loi (mhcl@micheleloi.pro)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as
+published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+---
+
+## Acknowledgments
+
+The "Meaningful Human Control" framework that mhc-cowork implements (Three
+Principles: Apollo, Themis, Fides; Seven Rules: Gabriele, Salomone, Thot,
+Esdra, Dioscuri, Ockham, Minerva) is research IP authored by Michele Loi.
+Use of the framework name and its principles in derivative works should
+preserve attribution to Loi's research lineage.
+
+The HTTP REST backend reuses architectural patterns from MHC-L
+(`mcp_server/` package) authored by the same upstream project. License
+compatibility: MHC-L is permissively licensed; mhc-cowork imports those
+patterns under AGPL v3 of this repository.
+
+The cowork plugin format follows the convention established by BeccarIA
+(`legal-tech-cowork/beccaria`), which itself derives from Anthropic's
+claude-for-legal snapshot. mhc-cowork is functionally independent and
+separately licensed.

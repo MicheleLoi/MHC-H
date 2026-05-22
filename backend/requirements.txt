@@ -1,0 +1,24 @@
+# mhc-cowork backend HTTP REST API dependencies
+# AGPL v3 — see LICENSE-AGPL
+
+# Web framework + ASGI server
+starlette>=0.36
+uvicorn[standard]>=0.27
+
+# Payments + email
+stripe>=8
+resend>=0.7
+
+# Password hashing reserved for future use (e.g. admin panel auth, recovery
+# codes per Recode IT signup pattern). Not required by the current MVP code
+# paths but kept here so the venv is forward-compatible with paid-tier work.
+argon2-cffi>=23
+
+# Multipart form parser (Starlette requires this when handlers receive
+# form-encoded bodies; included for safety even though our endpoints are
+# JSON-only).
+python-multipart>=0.0.9
+
+# YAML — optional for templates.py path that builds topology output; harmless
+# to include and matches the MHC-L mcp_server requirements baseline.
+pyyaml>=6
