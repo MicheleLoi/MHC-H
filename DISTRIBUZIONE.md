@@ -59,7 +59,7 @@ audit signature HMAC) vedi il [README.md](README.md).
 - **Anche supportato: Claude Code Desktop.** Stessa app, modalità alternativa
   di interazione. Il plugin MHC-H funziona anche lì.
 - **Bearer key personale RegIA.** Free tier, no carta di credito.
-  Vai su [mhc.micheleloi.pro/accesso/](https://mhc.micheleloi.pro/accesso/),
+  Vai su [micheleloi.pro/accesso/](https://micheleloi.pro/accesso/),
   inserisci la tua email, ricevi la chiave via posta. Tempo: <1 minuto.
   La stessa chiave funziona per MHC-H plugin e per il MCP server MHC-L Desktop
   (se in futuro ne avrai bisogno) — una chiave per utente.
