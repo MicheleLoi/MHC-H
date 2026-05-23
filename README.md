@@ -44,7 +44,7 @@ In breve, dentro Claude (Cowork o Claude Code Desktop):
 /plugin install mhc-h@MHC-H
 ```
 
-**Setup Bearer key.** Il plugin chiama un backend REST con Bearer auth. Per ottenere una key gratuita (tier free, no carta di credito): `https://mhc.micheleloi.pro/accesso/` — signup email-only, ricevi key via mail, paste in config plugin.
+**Setup Bearer key.** Il plugin chiama un backend REST con Bearer auth. Per ottenere una key gratuita (tier free, no carta di credito): `https://micheleloi.pro/accesso/` — signup email-only, ricevi key via mail, paste in config plugin.
 
 La stessa Bearer key dà accesso al plugin `mhc-h` e al MCP server MHC-L Desktop. Una key per utente.
 
