@@ -1,4 +1,4 @@
-# Part of mhc-cowork. AGPL v3 — see LICENSE-AGPL
+# Part of MHC-H. AGPL v3 — see LICENSE-AGPL
 """
 endpoints/artifacts.py — REST handler for artifact rendering + persistence.
 

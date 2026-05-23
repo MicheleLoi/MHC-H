@@ -1,9 +1,9 @@
-# Part of mhc-cowork. AGPL v3 — see LICENSE-AGPL
+# Part of MHC-H. AGPL v3 — see LICENSE-AGPL
 """
-webhook_handler.py — Stripe webhook handler for mhc-cowork.
+webhook_handler.py — Stripe webhook handler for MHC-H.
 
 Ported verbatim from MHC-L Phase 1 (mcp_server/webhook_handler.py). NOT
-activated in the mhc-cowork MVP (free-tier-only). Kept here so paid tier
+activated in the MHC-H MVP (free-tier-only). Kept here so paid tier
 can be activated post-MVP by simply wiring the route in server.py without
 re-implementing the webhook logic.
 
@@ -59,8 +59,8 @@ SECRET_BYTES = 32
 
 DEFAULT_TIER = "paid"
 
-EMAIL_FROM = "mhc-cowork <noreply@mhc.regia.it>"
-EMAIL_SUBJECT = "La tua chiave mhc-cowork (paid tier)"
+EMAIL_FROM = "MHC-H <noreply@mhc.regia.it>"
+EMAIL_SUBJECT = "La tua chiave MHC-H (paid tier)"
 
 STRIPE_TO_INTERNAL_STATUS = {
     "active": "active",
@@ -94,7 +94,7 @@ def _hash_key(plain: str) -> str:
 def _email_body(plain_key: str) -> str:
     return f"""Ciao,
 
-Benvenuto nel programma mhc-cowork.
+Benvenuto nel programma MHC-H.
 
 La tua API key personale e':
 
@@ -102,7 +102,7 @@ La tua API key personale e':
 
 Per installare il plugin con la chiave gia' pre-popolata, vai su:
 
-  https://claude.ai/plugins/install?marketplace=MicheleLoi/mhc-cowork&plugin=mhc&env=MHC_BEARER={plain_key}
+  https://claude.ai/plugins/install?marketplace=MicheleLoi/MHC-H&plugin=mhc-h&env=MHC_BEARER={plain_key}
 
 Sicurezza:
 - La chiave NON e' recuperabile: conservala in luogo sicuro
@@ -113,7 +113,7 @@ La revoca e' immediata: cancellando la sottoscrizione da Stripe la chiave
 viene disattivata al primo refresh del webhook.
 
 Buon lavoro,
-mhc-cowork
+MHC-H
 """
 
 

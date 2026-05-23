@@ -13,7 +13,7 @@ validation: {{approved / approved_with_edits}}
 # Complete Prompt
 
 <!--
-mhc-cowork template: Complete Prompt
+MHC-H template: Complete Prompt
 Purpose: Governing document for generation — the full specification
 Rules: 1 (state intent), 4 (persist with template)
 
@@ -132,5 +132,5 @@ Instructions for Claude:
 ---
 
 *Complete Prompt generated: {{TIMESTAMP}}*
-*mhc-cowork | Rules 1, 4*
+*MHC-H | Rules 1, 4*
 *Sources: {{SOURCE_LIST}}*

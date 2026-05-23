@@ -11,7 +11,7 @@ created_at: {{CREATED_AT}}
 # Decision Entry — {{TITLE}}
 
 <!--
-mhc-cowork template: Decision Entry
+MHC-H template: Decision Entry
 Purpose: Append-only record of a single cross-domain decision
 Rules: 2 (surface choices), 3 (write up), 4 (persist with template), Themis (authority chain)
 
@@ -48,4 +48,4 @@ Instructions for Claude:
 ---
 
 *Decision logged: {{CREATED_AT}}*
-*mhc-cowork | append-only*
+*MHC-H | append-only*

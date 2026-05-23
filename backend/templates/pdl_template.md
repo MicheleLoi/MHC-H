@@ -13,7 +13,7 @@ validation: {{approved / approved_with_edits}}
 # Prompt Development Log (PDL)
 
 <!--
-mhc-cowork template: Prompt Development Log
+MHC-H template: Prompt Development Log
 Purpose: Document how a prompt/specification evolved
 Rules: 2 (surface choices), 3 (write up), 4 (persist with template)
 
@@ -85,4 +85,4 @@ Instructions for Claude:
 ---
 
 *PDL generated: {{TIMESTAMP}}*
-*mhc-cowork | Rules 2, 3, 4*
+*MHC-H | Rules 2, 3, 4*

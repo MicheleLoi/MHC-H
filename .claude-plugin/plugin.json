@@ -1,13 +1,13 @@
 {
-  "name": "mhc",
+  "name": "mhc-h",
   "version": "0.1.0-mvp",
-  "description": "MHC — Meaningful Human Control governance harness per lavoro intellettuale assistito da AI. Sessioni governate, audit trail append-only, dialectical reasoning, provenance-tracked output. Domain-agnostic: applicabile a lavoro legale, ricerca accademica, medical peer review, policy making, engineering ADR, journalism, compliance. MVP 4 skill: mhc-start, mhc-trace, mhc-decision, mhc-end. Backend HTTP REST su api.mhc.regia.it (Bearer auth). AGPL-3.0.",
-  "keywords": ["governance", "mhc", "meaningful-human-control", "audit-trail", "decision-log", "provenance", "dialectical-reasoning", "knowledge-work", "regia", "agpl"],
+  "description": "MHC-H — Meaningful Human Control harness per lavoro intellettuale assistito da AI. Sessioni governate, audit trail append-only, dialectical reasoning, provenance-tracked output. Domain-agnostic: applicabile a lavoro legale, ricerca accademica, medical peer review, policy making, engineering ADR, journalism, compliance. MVP 4 skill: mhc-start, mhc-trace, mhc-decision, mhc-end. Backend HTTP REST su api.mhc.regia.it (Bearer auth). AGPL-3.0.",
+  "keywords": ["governance", "mhc", "mhc-h", "harness", "meaningful-human-control", "audit-trail", "decision-log", "provenance", "dialectical-reasoning", "knowledge-work", "regia", "agpl"],
   "author": {
     "name": "Michele Loi",
     "email": "mhcl@micheleloi.pro"
   },
   "license": "AGPL-3.0-only",
   "homepage": "https://mhc.regia.it",
-  "repository": "https://github.com/MicheleLoi/mhc-cowork"
+  "repository": "https://github.com/MicheleLoi/MHC-H"
 }

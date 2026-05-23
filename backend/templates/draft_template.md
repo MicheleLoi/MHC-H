@@ -11,7 +11,7 @@ upstream_refs: {{UPSTREAM_REFS_YAML}}
 # {{TITLE}}
 
 <!--
-mhc-cowork template: Draft
+MHC-H template: Draft
 Purpose: A provenance-tracked document draft (memo, brief, letter, spec, etc.)
 Rules: 3 (write up), 4 (persist with template), Fides (cite sources)
 
@@ -38,4 +38,4 @@ Instructions for Claude:
 ---
 
 *Draft created: {{TIMESTAMP}}*
-*mhc-cowork | provenance-tracked*
+*MHC-H | provenance-tracked*

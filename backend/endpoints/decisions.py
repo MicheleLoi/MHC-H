@@ -1,4 +1,4 @@
-# Part of mhc-cowork. AGPL v3 — see LICENSE-AGPL
+# Part of MHC-H. AGPL v3 — see LICENSE-AGPL
 """
 endpoints/decisions.py — REST handlers for the append-only decision log.
 

@@ -1,7 +1,7 @@
 # Session Log — [Project Name]
 
 <!--
-mhc-cowork template: Session Log
+MHC-H template: Session Log
 Purpose: Record what happened each session (Rule 3 — After)
 The clearing test: can you return next week and know where you are?
 

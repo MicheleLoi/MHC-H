@@ -44,4 +44,4 @@ Questa skill realizza la **Rule 1 (Gabriele)** — annunciare prima di azioni co
 
 ---
 
-*mhc-start — parte di mhc-cowork plugin, AGPL v3*
+*mhc-start — parte di MHC-H plugin, AGPL v3*

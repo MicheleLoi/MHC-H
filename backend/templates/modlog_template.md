@@ -14,7 +14,7 @@ validation: {{approved / approved_with_edits}}
 # Modification Log
 
 <!--
-mhc-cowork template: Modification Log
+MHC-H template: Modification Log
 Purpose: Track intellectual decisions during revision
 Rules: 2 (surface choices), 3 (write up), 4 (persist with template)
 
@@ -65,4 +65,4 @@ Type options — software artifacts (scripts, configs, skill files, templates):
 <!-- ENTRIES_END -->
 
 *Modification Log generated: {{TIMESTAMP}}*
-*mhc-cowork | Rules 2, 3, 4*
+*MHC-H | Rules 2, 3, 4*

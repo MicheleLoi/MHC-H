@@ -1,8 +1,8 @@
-# mhc-cowork backend HTTP REST API
+# MHC-H backend HTTP REST API
 
-Part of mhc-cowork. AGPL v3 — see `../LICENSE-AGPL`.
+Part of MHC-H. AGPL v3 — see `../LICENSE-AGPL`.
 
-Pure Starlette HTTP REST API. Powers the MHC plugin cowork MVP:
+Pure Starlette HTTP REST API. Powers the MHC-H MVP:
 session lifecycle, append-only decisions log, provenance-tracked
 artifacts.
 
@@ -21,13 +21,13 @@ pip install -r backend/requirements.txt
 
 | Var | Purpose | Default |
 |---|---|---|
-| `MHC_API_DB_PATH` | SQLite keystore + governance store | `~/.mhc-cowork-keystore.db` |
+| `MHC_API_DB_PATH` | SQLite keystore + governance store | `~/.mhc-h-keystore.db` |
 | `RESEND_API_KEY` | Send free-tier welcome emails (and paid-tier emails) | required for email |
 | `MHC_API_BASE_URL` | Public base URL used to build welcome links sent in emails | `https://api.mhc.regia.it` |
-| `MHC_MARKETPLACE` | Override marketplace coordinate in install URL | `MicheleLoi/mhc-cowork` |
-| `MHC_PLUGIN_NAME` | Override plugin name in install URL | `mhc` |
-| `MHC_EMAIL_FROM` | Sender label in welcome email | `mhc-cowork <noreply@mhc.regia.it>` |
-| `MHC_EMAIL_SUBJECT` | Subject of welcome email | `La tua chiave mhc-cowork` |
+| `MHC_MARKETPLACE` | Override marketplace coordinate in install URL | `MicheleLoi/MHC-H` |
+| `MHC_PLUGIN_NAME` | Override plugin name in install URL | `mhc-h` |
+| `MHC_EMAIL_FROM` | Sender label in welcome email | `MHC-H <noreply@mhc.regia.it>` |
+| `MHC_EMAIL_SUBJECT` | Subject of welcome email | `La tua chiave MHC-H` |
 | `STRIPE_SECRET_KEY` | Paid tier only (post-MVP) | — |
 | `STRIPE_WEBHOOK_SECRET` | Paid tier webhook signature | — |
 | `MHC_SIGNUP_SUCCESS_URL` | Paid Stripe Checkout success redirect | `https://mhc.regia.it/benvenuto/` |
@@ -47,7 +47,7 @@ uvicorn backend.server:app --host 0.0.0.0 --port 8080
 
 The server initializes the SQLite schema on startup (idempotent — safe to
 re-run). On first run with default paths, the keystore is created at
-`~/.mhc-cowork-keystore.db`.
+`~/.mhc-h-keystore.db`.
 
 ## Endpoints
 
@@ -103,7 +103,7 @@ For local smoke tests before the website signup flow is wired up:
 import os, hashlib, secrets, sqlite3, uuid
 from datetime import datetime, timezone
 
-os.environ.setdefault("MHC_API_DB_PATH", str(os.path.expanduser("~/.mhc-cowork-keystore.db")))
+os.environ.setdefault("MHC_API_DB_PATH", str(os.path.expanduser("~/.mhc-h-keystore.db")))
 
 from backend.db import init_db, connect
 init_db()

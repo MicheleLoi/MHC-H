@@ -1,6 +1,6 @@
-# Part of mhc-cowork. AGPL v3 — see LICENSE-AGPL
+# Part of MHC-H. AGPL v3 — see LICENSE-AGPL
 """
-signup_handler.py — mhc-cowork signup endpoint (free + paid tiers).
+signup_handler.py — MHC-H signup endpoint (free + paid tiers).
 
 Two routes, both bare ASGI to match the pattern used for legacy MHC-L paths:
 
@@ -85,8 +85,8 @@ SIGNUP_WELCOME_PREFIX = "/signup/welcome/"
 
 # Marketplace + plugin coordinates baked into the install URL the welcome
 # endpoint returns. Override via env at runtime if these change.
-DEFAULT_MARKETPLACE = "MicheleLoi/mhc-cowork"
-DEFAULT_PLUGIN_NAME = "mhc"
+DEFAULT_MARKETPLACE = "MicheleLoi/MHC-H"
+DEFAULT_PLUGIN_NAME = "mhc-h"
 
 # Synthetic markers in the applications + api_keys tables. The api_keys
 # schema requires NOT NULL stripe_customer_id and stripe_subscription_id;
@@ -103,8 +103,8 @@ WELCOME_TOKEN_BYTES = 16
 DEFAULT_TIER_LABEL = "free"
 
 # Email envelope (free tier).
-DEFAULT_EMAIL_FROM = "mhc-cowork <noreply@mhc.regia.it>"
-DEFAULT_EMAIL_SUBJECT = "La tua chiave mhc-cowork"
+DEFAULT_EMAIL_FROM = "MHC-H <noreply@mhc.regia.it>"
+DEFAULT_EMAIL_SUBJECT = "La tua chiave MHC-H"
 
 # Env var names.
 ENV_RESEND_API_KEY = "RESEND_API_KEY"
@@ -158,7 +158,7 @@ def _email_body(plain_key: str, welcome_token: str, install_url: str) -> str:
     welcome_url = _build_welcome_url(welcome_token)
     return f"""Ciao,
 
-benvenuto in mhc-cowork.
+benvenuto in MHC-H.
 
 La tua API key personale e' inclusa qui sotto. Conservala in luogo sicuro
 — NON e' recuperabile.
@@ -176,11 +176,11 @@ parametri):
 
 Sicurezza:
 - Non condividere la chiave con nessuno
-- La chiave da' accesso al tuo decision log e ai tuoi artifact su mhc-cowork
+- La chiave da' accesso al tuo decision log e ai tuoi artifact su MHC-H
 - Per revoca scrivi a noreply@mhc.regia.it
 
 Buon lavoro,
-mhc-cowork
+MHC-H
 """
 
 
@@ -284,7 +284,7 @@ def _insert_free_tier_rows(
             app_id,
             email,
             firm or FREE_TIER_FIRM_SENTINEL,
-            "mhc-cowork free tier signup",
+            "MHC-H free tier signup",
             notes_payload,
             now,
             now,

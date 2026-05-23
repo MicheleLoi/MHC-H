@@ -12,7 +12,7 @@ validation: {{approved / approved_with_edits}}
 # Epistemic Trace
 
 <!--
-mhc-cowork template: Epistemic Trace
+MHC-H template: Epistemic Trace
 Purpose: Crystallize exploratory conversation into structured guidance
 Rules: 2 (surface choices), 3 (write up), 4 (persist with template)
 
@@ -81,4 +81,4 @@ Instructions for Claude:
 ---
 
 *Trace generated: {{TIMESTAMP}}*
-*mhc-cowork | Rules 2, 3, 4*
+*MHC-H | Rules 2, 3, 4*

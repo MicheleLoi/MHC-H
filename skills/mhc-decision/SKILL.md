@@ -82,4 +82,4 @@ Questa skill realizza la **Rule 4 (Esdra)** — *proba omnia*: ogni decisione re
 
 ---
 
-*mhc-decision — parte di mhc-cowork plugin, AGPL v3*
+*mhc-decision — parte di MHC-H plugin, AGPL v3*

@@ -1,16 +1,16 @@
-# Part of mhc-cowork. AGPL v3 — see LICENSE-AGPL
+# Part of MHC-H. AGPL v3 — see LICENSE-AGPL
 """
-db.py — mhc-cowork SQLite storage for signup + auth + governance pipeline.
+db.py — MHC-H SQLite storage for signup + auth + governance pipeline.
 
 Single source of truth for the keystore + applications + governance schema.
 
 Original schema (api_keys, applications, stripe_events_processed) is embedded
 verbatim from the MHC-L Phase 1 cross-product canon (signup_auth_architecture.md
 §4). The three governance tables (lawyer_sessions, decisions, artifacts) are
-added here for the MHC plugin cowork MVP.
+added here for the MHC-H MVP.
 
 Storage path:
-  Resolved from env var MHC_API_DB_PATH, defaulting to ~/.mhc-cowork-keystore.db.
+  Resolved from env var MHC_API_DB_PATH, defaulting to ~/.mhc-h-keystore.db.
 
 Concurrency:
   WAL mode enabled at init time. Concurrent readers (auth middleware on every
@@ -34,11 +34,11 @@ from typing import Iterator
 # ---------------------------------------------------------------------------
 
 DB_PATH_ENV = "MHC_API_DB_PATH"
-DEFAULT_DB_PATH = Path.home() / ".mhc-cowork-keystore.db"
+DEFAULT_DB_PATH = Path.home() / ".mhc-h-keystore.db"
 
 # Original auth/signup tables — unchanged from MHC-L canon §4.
 # Plus three new governance tables (lawyer_sessions, decisions, artifacts)
-# specified in the mhc-cowork MVP plan (la-scelta-b-woolly-pizza.md Fase 1).
+# specified in the MHC-H MVP plan (la-scelta-b-woolly-pizza.md Fase 1).
 SCHEMA_SQL = """
 CREATE TABLE IF NOT EXISTS applications (
   id                           TEXT PRIMARY KEY,
@@ -84,7 +84,7 @@ CREATE TABLE IF NOT EXISTS stripe_events_processed (
 );
 
 -- ---------------------------------------------------------------------------
--- Governance tables (mhc-cowork MVP — Fase 1)
+-- Governance tables (MHC-H MVP — Fase 1)
 -- ---------------------------------------------------------------------------
 
 CREATE TABLE IF NOT EXISTS lawyer_sessions (

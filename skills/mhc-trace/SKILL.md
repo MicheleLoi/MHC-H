@@ -52,4 +52,4 @@ Questa skill realizza la **Rule 3 (Thot)** — *verba volant, scripta manent*: c
 
 ---
 
-*mhc-trace — parte di mhc-cowork plugin, AGPL v3*
+*mhc-trace — parte di MHC-H plugin, AGPL v3*

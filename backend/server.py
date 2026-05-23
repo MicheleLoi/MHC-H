@@ -1,6 +1,6 @@
-# Part of mhc-cowork. AGPL v3 — see LICENSE-AGPL
+# Part of MHC-H. AGPL v3 — see LICENSE-AGPL
 """
-server.py — mhc-cowork HTTP REST API entry point.
+server.py — MHC-H HTTP REST API entry point.
 
 Replaces the MCP-protocol transport layer of the original MHC-L mcp_server
 package with pure HTTP REST over Starlette. Business logic (template
@@ -9,7 +9,7 @@ rendering, audit signature, SQLite schema) is shared with MHC-L.
 Signup + Stripe webhook are NOT mounted on this server. Bearer keys are
 issued by the MHC-L production signup flow at https://mhc.micheleloi.pro/
 (POST /signup/create-checkout-session + /webhooks/stripe), and the same
-key authenticates both MHC-L MCP tool calls and the mhc-cowork REST API
+key authenticates both MHC-L MCP tool calls and the MHC-H REST API
 below. The shared DB is /root/.mhc-l-keystore.db on the VPS (set via env
 MHC_API_DB_PATH). signup_handler.py + webhook_handler.py remain in source
 for future paid-tier activation but are not wired into routes.
@@ -31,7 +31,7 @@ Run:
   python -m backend.server --port 9000       # custom port
 
 Env vars (see README.md for details):
-  MHC_API_DB_PATH                  SQLite path (default ~/.mhc-cowork-keystore.db
+  MHC_API_DB_PATH                  SQLite path (default ~/.mhc-h-keystore.db
                                                  — on VPS set to MHC-L canonical
                                                  /root/.mhc-l-keystore.db for
                                                  shared-key access)
@@ -60,7 +60,7 @@ def build_app() -> Starlette:
     """Build the Starlette ASGI app with Bearer middleware wired in."""
     # init_db is also called lazily by every handler, but doing it once at
     # startup makes the schema's existence visible in logs and surfaces any
-    # path/permissions misconfiguration immediately. Creates mhc-cowork
+    # path/permissions misconfiguration immediately. Creates MHC-H
     # governance tables (lawyer_sessions, decisions, artifacts) alongside
     # the existing MHC-L tables (applications, api_keys, stripe_events_processed)
     # via CREATE TABLE IF NOT EXISTS — no collision on shared DB.
@@ -95,7 +95,7 @@ app = build_app()
 # ---------------------------------------------------------------------------
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="mhc-cowork HTTP REST API")
+    parser = argparse.ArgumentParser(description="MHC-H HTTP REST API")
     parser.add_argument("--host", default="0.0.0.0", help="bind address (default: 0.0.0.0)")
     parser.add_argument("--port", type=int, default=8080, help="port (default: 8080)")
     parser.add_argument(
@@ -111,7 +111,7 @@ def main() -> None:
 
     args = parse_args()
     print(
-        f"[server] mhc-cowork listening on http://{args.host}:{args.port} "
+        f"[server] MHC-H listening on http://{args.host}:{args.port} "
         f"(Bearer auth enabled, all routes protected — signup via MHC-L)",
         file=sys.stderr,
     )

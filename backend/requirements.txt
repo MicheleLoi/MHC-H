@@ -1,4 +1,4 @@
-# mhc-cowork backend HTTP REST API dependencies
+# MHC-H backend HTTP REST API dependencies
 # AGPL v3 — see LICENSE-AGPL
 
 # Web framework + ASGI server

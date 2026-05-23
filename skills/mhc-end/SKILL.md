@@ -53,4 +53,4 @@ Questa skill realizza la **Rule 3 (Thot)** — offre un'ultima occasione per scr
 
 ---
 
-*mhc-end — parte di mhc-cowork plugin, AGPL v3*
+*mhc-end — parte di MHC-H plugin, AGPL v3*

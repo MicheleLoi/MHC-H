@@ -1,22 +1,24 @@
-# MHC — Meaningful Human Control governance harness for AI-assisted knowledge work
+# MHC-H — Meaningful Human Control harness for AI-assisted knowledge work
 
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 [![Status: MVP experimental](https://img.shields.io/badge/Status-MVP%20experimental-orange.svg)](#status)
 [![Version: 0.1.0-mvp](https://img.shields.io/badge/Version-0.1.0--mvp-yellow.svg)](#status)
 
-*Claude cowork plugin + HTTP REST backend. Quattro skill MVP che orchestrano una sessione di lavoro intellettuale assistito da AI sotto governance esplicita: dichiarazione assunzioni, mappa autorità, citazioni grounding, decision_log append-only, output con provenance.*
+*Claude plugin + HTTP REST backend. Quattro skill MVP che orchestrano una sessione di lavoro intellettuale assistito da AI sotto governance esplicita: dichiarazione assunzioni, mappa autorità, citazioni grounding, decision_log append-only, output con provenance.*
 
-> **Posizione strategica.** MHC è uno dei tre prodotti del brand ombrello **RegIA**, insieme a **BeccarIA** (skill legali per l'avvocato italiano nell'ecosistema legal-AI open source) e **Recode IT** (pseudonimizzazione web standalone). I tre moduli sono plug-and-play: ciascuno standalone o combinabili a stack. MHC è il harness governance, applicabile cross-dominio, per chi usa AI in tasks intellettuali ad alta responsabilità.
+> **Posizione strategica.** MHC-H è uno dei tre prodotti del brand ombrello **RegIA**, insieme a **BeccarIA** (skill legali per l'avvocato italiano nell'ecosistema legal-AI open source) e **Recode IT** (pseudonimizzazione web standalone). I tre moduli sono plug-and-play: ciascuno standalone o combinabili a stack. MHC-H è il harness governance, applicabile cross-dominio, per chi usa AI in tasks intellettuali ad alta responsabilità. La "H" sta per *harness* — e per ogni altra cosa che ti aiuti a ricordare cosa il framework fa: hold, hub, hinge.
 
 ---
 
-## Cosa è MHC
+## Cosa è MHC-H
 
-MHC è un **framework di governance per lavoro intellettuale assistito da AI**. Distillato in tre principi epistemici (Apollo / Themis / Fides) e sette regole operative (Gabriele / Salomone / Thot / Esdra / Dioscuri / Ockham / Minerva), risponde alla domanda: *come rendo auditable e accountable il lavoro che produco con un assistente AI?*
+MHC-H è un **framework di governance per lavoro intellettuale assistito da AI**, materializzato come plugin Claude. Distillato in tre principi epistemici (Apollo / Themis / Fides) e sette regole operative (Gabriele / Salomone / Thot / Esdra / Dioscuri / Ockham / Minerva), risponde alla domanda: *come rendo auditable e accountable il lavoro che produco con un assistente AI?*
 
-Il plugin cowork `mhc` istanzia questo framework dentro Claude. Apre una sessione governata (`/mhc-start`), permette di cristallizzare ragionamenti in artefatti tracciati (`/mhc-trace`), registra decisioni in un log append-only consultabile retrospettivamente (`/mhc-decision`), e chiude la sessione con export integrale del transcript (`/mhc-end`). Ogni richiesta al backend è firmata con audit signature HMAC; il decision_log è append-only by design — non è possibile sovrascrivere o cancellare entry passate.
+Il plugin `mhc-h` istanzia questo framework dentro Claude. Apre una sessione governata (`/mhc-start`), permette di cristallizzare ragionamenti in artefatti tracciati (`/mhc-trace`), registra decisioni in un log append-only consultabile retrospettivamente (`/mhc-decision`), e chiude la sessione con export integrale del transcript (`/mhc-end`). Ogni richiesta al backend è firmata con audit signature HMAC; il decision_log è append-only by design — non è possibile sovrascrivere o cancellare entry passate.
 
 **Domain-agnostic.** Il framework non assume un dominio professionale specifico.
+
+**Funziona sia in Claude Desktop (tab Cowork) sia in Claude Code Desktop.** Stessa app, due modalità di interazione; il plugin gira in entrambe.
 
 ## Per chi
 
@@ -33,16 +35,18 @@ Chi sente il bisogno di **accountability tracciabile** nel proprio lavoro intell
 
 ## Installazione
 
-Due comandi guidati dentro Claude Code Desktop:
+Per la guida operativa step-by-step (Cowork primary, Claude Code Desktop secondario), vedi [`DISTRIBUZIONE.md`](DISTRIBUZIONE.md).
+
+In breve, dentro Claude (Cowork o Claude Code Desktop):
 
 ```text
-/plugin marketplace add MicheleLoi/mhc-cowork
-/plugin install mhc@mhc-cowork
+/plugin marketplace add MicheleLoi/MHC-H
+/plugin install mhc-h@MHC-H
 ```
 
 **Setup Bearer key.** Il plugin chiama un backend REST con Bearer auth. Per ottenere una key gratuita (tier free, no carta di credito): `https://mhc.micheleloi.pro/accesso/` — signup email-only, ricevi key via mail, paste in config plugin.
 
-La stessa Bearer key dà accesso al plugin `mhc` cowork e al MCP server MHC-L Desktop. Una key per utente.
+La stessa Bearer key dà accesso al plugin `mhc-h` e al MCP server MHC-L Desktop. Una key per utente.
 
 ## Le quattro skill MVP
 
@@ -66,7 +70,7 @@ Razionale AGPL:
 - **Coerenza filosofica** — un framework di governance/accountability discipline è coerente solo con una licenza che impone analoga accountability al software stesso
 - **Anti-fork-and-strip-credit** — il framework Three Principles + Seven Rules è research IP di Michele Loi; AGPL preserva attribution downstream
 - **Coerenza con l'ecosistema open source legal-AI** dove AGPL è la postura dominante
-- **Output dell'utente NON sono coperti** — AGPL governa solo il software MHC, NON gli artefatti prodotti usando MHC (memo, decision log entries, draft, output rendered restano proprietà integrale dell'utente)
+- **Output dell'utente NON sono coperti** — AGPL governa solo il software MHC-H, NON gli artefatti prodotti usando MHC-H (memo, decision log entries, draft, output rendered restano proprietà integrale dell'utente)
 - **Dual-licensing commerciale** — opzionale post-MVP per casi enterprise specifici; contattare il founder per discutere
 
 ## Related projects
@@ -82,9 +86,9 @@ Contatto: [mhcl@micheleloi.pro](mailto:mhcl@micheleloi.pro)
 
 ---
 
-# MHC — Meaningful Human Control governance harness (English summary)
+# MHC-H — Meaningful Human Control harness (English summary)
 
-*Claude cowork plugin + HTTP REST backend. Four MVP skills that orchestrate AI-assisted intellectual work under explicit governance: declared assumptions, mapped authority chain, grounded citations, append-only decision log, provenance-tracked output.*
+*Claude plugin + HTTP REST backend. Four MVP skills that orchestrate AI-assisted intellectual work under explicit governance: declared assumptions, mapped authority chain, grounded citations, append-only decision log, provenance-tracked output. Runs in both Claude Desktop (Cowork tab) and Claude Code Desktop.*
 
 **The framework.** Three epistemic principles (Apollo / Themis / Fides) plus seven operational rules (Gabriele / Salomone / Thot / Esdra / Dioscuri / Ockham / Minerva). Domain-agnostic: applicable to lawyers, researchers, medical peer reviewers, policy makers, engineering ADR, journalism, compliance officers.
 
@@ -92,4 +96,4 @@ Contatto: [mhcl@micheleloi.pro](mailto:mhcl@micheleloi.pro)
 
 **Status:** MVP experimental, NOT production-ready. Feedback and bug reports welcome via founder contact.
 
-**License:** AGPL-3.0-only. The framework "Meaningful Human Control" (Three Principles + Seven Rules) is research IP authored by Michele Loi. Use of the framework name in derivative works should preserve attribution to Loi's research lineage. AGPL governs only MHC software, NOT artifacts produced by users (memos, decision logs, drafts remain users' property).
+**License:** AGPL-3.0-only. The framework "Meaningful Human Control" (Three Principles + Seven Rules) is research IP authored by Michele Loi. Use of the framework name in derivative works should preserve attribution to Loi's research lineage. AGPL governs only MHC-H software, NOT artifacts produced by users (memos, decision logs, drafts remain users' property).

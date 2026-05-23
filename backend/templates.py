@@ -1,11 +1,11 @@
-# Part of mhc-cowork. AGPL v3 — see LICENSE-AGPL
+# Part of MHC-H. AGPL v3 — see LICENSE-AGPL
 """
-templates.py — Template loader for the mhc-cowork backend.
+templates.py — Template loader for the MHC-H backend.
 
 Reads template files from templates/ (bundled with this package). Original
 fill functions (note, trace, pdl, modlog, product_dev_log, session_log,
 prompt) are ported verbatim from the MHC-L MCP server. Two new fill
-functions (decision_entry, draft) are added for the mhc-cowork MVP.
+functions (decision_entry, draft) are added for the MHC-H MVP.
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ TEMPLATE_FILES: Dict[str, str] = {
     "modlog": "modlog_template.md",
     "session_log": "session-log-template.md",
     "prompt": "complete_prompt_template.md",
-    # mhc-cowork additions
+    # MHC-H additions
     "decision_entry": "decision_entry_template.md",
     "draft": "draft_template.md",
 }
@@ -486,7 +486,7 @@ def fill_modlog(
 
 
 # ---------------------------------------------------------------------------
-# mhc-cowork additions
+# MHC-H additions
 # ---------------------------------------------------------------------------
 
 def fill_decision_entry(

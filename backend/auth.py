@@ -1,6 +1,6 @@
-# Part of mhc-cowork. AGPL v3 — see LICENSE-AGPL
+# Part of MHC-H. AGPL v3 — see LICENSE-AGPL
 """
-auth.py — mhc-cowork Bearer token validation (HTTP transport).
+auth.py — MHC-H Bearer token validation (HTTP transport).
 
 Thin ASGI middleware that:
   1. Reads `Authorization: Bearer <token>` header from the incoming request.
@@ -14,11 +14,11 @@ Thin ASGI middleware that:
 
 Storage:
   SQLite (see db.py). Path resolved from env var MHC_API_DB_PATH,
-  defaulting to ~/.mhc-cowork-keystore.db.
+  defaulting to ~/.mhc-h-keystore.db.
 
 Design choice (verbatim from MHC-L Phase 1):
   We do NOT use mcp.server.auth.middleware.bearer_auth.RequireAuthMiddleware.
-  That class is part of the MCP SDK's OAuth 2.1 stack. mhc-cowork has no
+  That class is part of the MCP SDK's OAuth 2.1 stack. MHC-H has no
   OAuth flow, no scopes, no expiring tokens — just static SHA-256 keystore
   lookup against an invitation list. Custom thin middleware is ~60 lines, no
   SDK coupling, easier to audit. (Principle 9 Ockham.)
@@ -144,7 +144,7 @@ def validate_token(
 
 class BearerAuthMiddleware:
     """
-    ASGI middleware enforcing Bearer token auth against the mhc-cowork SQLite
+    ASGI middleware enforcing Bearer token auth against the MHC-H SQLite
     api_keys table.
 
     On success, the middleware attaches the bearer token and user email to the
