@@ -103,8 +103,8 @@ WELCOME_TOKEN_BYTES = 16
 DEFAULT_TIER_LABEL = "free"
 
 # Email envelope (free tier).
-DEFAULT_EMAIL_FROM = "MHC-H <noreply@mhc.regia.it>"
-DEFAULT_EMAIL_SUBJECT = "La tua chiave MHC-H"
+DEFAULT_EMAIL_FROM = "MHC <mhcl@micheleloi.pro>"
+DEFAULT_EMAIL_SUBJECT = "La tua chiave MHC"
 
 # Env var names.
 ENV_RESEND_API_KEY = "RESEND_API_KEY"
@@ -149,7 +149,7 @@ def _build_install_url(plain_key: str) -> str:
 
 def _build_welcome_url(welcome_token: str) -> str:
     """Construct the public welcome URL for the user's email body."""
-    base = os.environ.get(ENV_BASE_URL, "https://api.mhc.regia.it").rstrip("/")
+    base = os.environ.get(ENV_BASE_URL, "https://mhc.micheleloi.pro/cowork").rstrip("/")
     return f"{base}{SIGNUP_WELCOME_PREFIX}{welcome_token}"
 
 
@@ -177,7 +177,7 @@ parametri):
 Sicurezza:
 - Non condividere la chiave con nessuno
 - La chiave da' accesso al tuo decision log e ai tuoi artifact su MHC-H
-- Per revoca scrivi a noreply@mhc.regia.it
+- Per revoca scrivi a mhcl@micheleloi.pro
 
 Buon lavoro,
 MHC-H
@@ -414,10 +414,10 @@ def _create_paid_checkout_session(price_id: str) -> dict:
         raise RuntimeError("STRIPE_SECRET_KEY not set — cannot create paid Checkout Session")
 
     success_url = os.environ.get(
-        "MHC_SIGNUP_SUCCESS_URL", "https://mhc.regia.it/benvenuto/"
+        "MHC_SIGNUP_SUCCESS_URL", "https://micheleloi.pro/mhc/setup/"
     )
     cancel_url = os.environ.get(
-        "MHC_SIGNUP_CANCEL_URL", "https://mhc.regia.it/signup/"
+        "MHC_SIGNUP_CANCEL_URL", "https://micheleloi.pro/accesso/"
     )
 
     stripe.api_key = secret_key

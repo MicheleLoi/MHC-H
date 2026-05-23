@@ -39,7 +39,7 @@ quattro skill MVP:
 
 Il plugin gira **in entrambe le modalità di Claude**: tab Cowork in Claude
 Desktop (UI grafica, 5 click) **e** Claude Code Desktop. Il backend HTTP REST
-è hostato su `api.mhc.regia.it`, autenticato con una Bearer key personale.
+è hostato su `mhc.micheleloi.pro/cowork`, autenticato con una Bearer key personale.
 
 Per il razionale tecnico completo (perché AGPL, perché backend remoto, perché
 audit signature HMAC) vedi il [README.md](README.md).
@@ -133,31 +133,26 @@ Path UI **diverso** dal precedente: si usa il pulsante **"Aggiungi plugin"**
 4. Claude Desktop estrae e installa il plugin. Comparirà nella lista plugin
    con tag "Active".
 
-In alternativa allo zip, al passo 4 della procedura standard puoi incollare il
-**percorso assoluto della cartella locale** del repo (es.
-`C:\Users\<nome>\MHC-H`) al posto dell'URL GitHub: il resto del flusso è
-identico.
-
 ---
 
 ## Configurazione della Bearer key
 
 Dopo l'installazione, MHC-H ha bisogno della tua Bearer key per parlare col
-backend (`api.mhc.regia.it`). Senza key, le skill rispondono "Bearer non
+backend (`mhc.micheleloi.pro/cowork`). Senza key, le skill rispondono "Bearer non
 configurato" e si fermano.
 
 1. **Recupera la key dalla email RegIA** (vedi Prerequisiti).
-   Subject tipico: *"La tua chiave MHC-H"*. La chiave ha formato
+   Subject tipico: *"La tua chiave MHC"*. La chiave ha formato
    `mhc_live_<32 caratteri alfanumerici>`.
 2. **Apri le impostazioni plugin** in Claude Desktop:
    tab **Cowork** → **Customize → Plugin** → accanto a `mhc-h` clicca
    l'icona impostazioni (ingranaggio).
 3. **Incolla la key** nel campo **`MHC_BEARER`**. Salva.
 4. **(Opzionale)** Se devi puntare a un backend diverso da quello di default
-   (`https://api.mhc.regia.it`), imposta anche **`MHC_API_BASE`** col tuo URL.
+   (`https://mhc.micheleloi.pro/cowork`), imposta anche **`MHC_API_BASE`** col tuo URL.
    Per uso standard ignora questo passo.
 
-> **Single allowlist note.** MHC-H usa solo l'host `api.mhc.regia.it` per il
+> **Single allowlist note.** MHC-H usa solo l'host `mhc.micheleloi.pro` per il
 > backend, già documentato come dominio first-party RegIA. Nessun setup
 > aggiuntivo richiesto sul `Network egress` di Claude Desktop nella maggior
 > parte dei piani. Se il tuo piano enterprise ha l'allowlist non modificabile
@@ -241,7 +236,7 @@ Possibili cause:
 
 1. **Connessione internet assente.** Verifica.
 2. **Host bloccato da policy di rete enterprise.** Apri *Impostazioni → Network
-   egress* di Claude Desktop e verifica che `api.mhc.regia.it` sia raggiungibile.
+   egress* di Claude Desktop e verifica che `mhc.micheleloi.pro/cowork` sia raggiungibile.
    Se il piano blocca host first-party, contatta `mhcl@micheleloi.pro`.
 3. **Backend temporaneamente down.** Lo trovi su tutte le installazioni
    contemporaneamente. Riprova fra qualche minuto, oppure scrivimi.
@@ -297,7 +292,7 @@ MHC-H opera **dentro la sandbox Claude**, isolata per conversazione. Le
 cartelle che colleghi a una conversazione (in Cowork tab) sono visibili al
 plugin; nient'altro del tuo computer lo è.
 
-Le chiamate di rete del plugin vanno **solo** al backend `api.mhc.regia.it`,
+Le chiamate di rete del plugin vanno **solo** al backend `mhc.micheleloi.pro/cowork`,
 con autenticazione Bearer e (per gli endpoint append-only) audit signature
 HMAC-SHA256. Nessuna telemetria, nessun tracking, nessun analytics.
 
@@ -357,7 +352,7 @@ restano (decisioni append-only, artefatti) — puoi sempre rilanciare l'install
 e leggere il tuo decision log con la stessa Bearer key.
 
 **MHC-H funziona offline?**
-No. Il backend è remoto (`api.mhc.regia.it`). Senza rete, le skill
+No. Il backend è remoto (`mhc.micheleloi.pro/cowork`). Senza rete, le skill
 rispondono "Backend non raggiungibile". Per uso offline c'è MHC-L Desktop
 (MCP server locale) — vedi repo separato.
 
@@ -365,7 +360,7 @@ rispondono "Backend non raggiungibile". Per uso offline c'è MHC-L Desktop
 Sì, una chiave per utente per tutta la piattaforma RegIA.
 
 **Come revoco la mia Bearer key?**
-Scrivi a [noreply@mhc.regia.it](mailto:noreply@mhc.regia.it). Revoca immediata.
+Scrivi a [mhcl@micheleloi.pro](mailto:mhcl@micheleloi.pro). Revoca immediata.
 
 **Cosa è RegIA?**
 RegIA è il brand ombrello / azienda che produce MHC-H + due altri moduli:
@@ -378,6 +373,6 @@ per il quadro strategico.
 
 *DISTRIBUZIONE.md — MHC-H v0.1.0-mvp — draft 2026-05-23, audience no-terminale
 (Cowork primary + Claude Code Desktop secondario). Single backend host
-(`api.mhc.regia.it`), single-step Bearer configuration. Per riferimenti canon
+(`mhc.micheleloi.pro/cowork`), single-step Bearer configuration. Per riferimenti canon
 vedi MHC-Work `_org/decision_log.md` 2026-05-23 PM late §"Naming canonical:
 MHC-H".*

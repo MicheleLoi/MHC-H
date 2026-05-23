@@ -15,8 +15,8 @@ Questa skill realizza la **Rule 3 (Thot)** — offre un'ultima occasione per scr
 ## Steps
 
 1. Read env var `MHC_BEARER` (set at plugin install).
-   - Se assente: errore *"Bearer key non configurato. Reinstalla il plugin dal welcome page del sito mhc.regia.it."* Stop.
-2. Read env var `MHC_API_BASE` (default `https://api.mhc.regia.it`).
+   - Se assente: errore *"Bearer key non configurato. Reinstalla il plugin dal welcome page del sito micheleloi.pro/accesso/."* Stop.
+2. Read env var `MHC_API_BASE` (default `https://mhc.micheleloi.pro/cowork`).
 3. Recupera `MHC_SID` dal conversation context.
    - Se assente: comunica *"Nessuna sessione MHC attiva da chiudere. Nessuna azione."* Stop.
 4. **Rule 3 (Thot) — wrap-up check PRIMA della chiusura.** Chiedi all'avvocato:

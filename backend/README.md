@@ -23,15 +23,15 @@ pip install -r backend/requirements.txt
 |---|---|---|
 | `MHC_API_DB_PATH` | SQLite keystore + governance store | `~/.mhc-h-keystore.db` |
 | `RESEND_API_KEY` | Send free-tier welcome emails (and paid-tier emails) | required for email |
-| `MHC_API_BASE_URL` | Public base URL used to build welcome links sent in emails | `https://api.mhc.regia.it` |
+| `MHC_API_BASE_URL` | Public base URL used to build welcome links sent in emails | `https://mhc.micheleloi.pro/cowork` |
 | `MHC_MARKETPLACE` | Override marketplace coordinate in install URL | `MicheleLoi/MHC-H` |
 | `MHC_PLUGIN_NAME` | Override plugin name in install URL | `mhc-h` |
-| `MHC_EMAIL_FROM` | Sender label in welcome email | `MHC-H <noreply@mhc.regia.it>` |
-| `MHC_EMAIL_SUBJECT` | Subject of welcome email | `La tua chiave MHC-H` |
+| `MHC_EMAIL_FROM` | Sender label in welcome email | `MHC <mhcl@micheleloi.pro>` |
+| `MHC_EMAIL_SUBJECT` | Subject of welcome email | `La tua chiave MHC` |
 | `STRIPE_SECRET_KEY` | Paid tier only (post-MVP) | — |
 | `STRIPE_WEBHOOK_SECRET` | Paid tier webhook signature | — |
-| `MHC_SIGNUP_SUCCESS_URL` | Paid Stripe Checkout success redirect | `https://mhc.regia.it/benvenuto/` |
-| `MHC_SIGNUP_CANCEL_URL` | Paid Stripe Checkout cancel redirect | `https://mhc.regia.it/signup/` |
+| `MHC_SIGNUP_SUCCESS_URL` | Paid Stripe Checkout success redirect | `https://micheleloi.pro/mhc/setup/` |
+| `MHC_SIGNUP_CANCEL_URL` | Paid Stripe Checkout cancel redirect | `https://micheleloi.pro/accesso/` |
 
 ## Run
 

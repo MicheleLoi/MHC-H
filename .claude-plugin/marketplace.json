@@ -7,7 +7,7 @@
     {
       "name": "mhc-h",
       "source": "./",
-      "description": "MHC-H — Meaningful Human Control harness per lavoro intellettuale assistito da AI. Quattro skill MVP (mhc-start, mhc-trace, mhc-decision, mhc-end) che orchestrano sessioni governate con audit trail append-only, dialectical reasoning, provenance-tracked output. Backend HTTP REST su api.mhc.regia.it (Bearer auth). Domain-agnostic: lavoro legale, ricerca, medical peer review, policy, engineering ADR, journalism, compliance. AGPL-3.0.",
+      "description": "MHC-H — Meaningful Human Control harness per lavoro intellettuale assistito da AI. Quattro skill MVP (mhc-start, mhc-trace, mhc-decision, mhc-end) che orchestrano sessioni governate con audit trail append-only, dialectical reasoning, provenance-tracked output. Backend HTTP REST su mhc.micheleloi.pro/cowork (Bearer auth). Domain-agnostic: lavoro legale, ricerca, medical peer review, policy, engineering ADR, journalism, compliance. AGPL-3.0.",
       "author": {
         "name": "Michele Loi"
       }

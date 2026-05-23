@@ -22,8 +22,8 @@ Questa skill realizza la **Rule 4 (Esdra)** — *proba omnia*: ogni decisione re
 ## Steps
 
 1. Read env var `MHC_BEARER` (set at plugin install).
-   - Se assente: errore *"Bearer key non configurato. Reinstalla il plugin dal welcome page del sito mhc.regia.it."* Stop.
-2. Read env var `MHC_API_BASE` (default `https://api.mhc.regia.it`).
+   - Se assente: errore *"Bearer key non configurato. Reinstalla il plugin dal welcome page del sito micheleloi.pro/accesso/."* Stop.
+2. Read env var `MHC_API_BASE` (default `https://mhc.micheleloi.pro/cowork`).
 3. Recupera `MHC_SID` dal conversation context (impostato da `/mhc-start`).
    - Se assente: comunica *"Nessuna sessione MHC attiva. Digita `/mhc-start` prima — il decision_log richiede SID per tracciabilità."* Stop.
 4. Componi l'entry strutturata dalla conversazione:

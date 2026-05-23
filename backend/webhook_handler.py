@@ -59,8 +59,8 @@ SECRET_BYTES = 32
 
 DEFAULT_TIER = "paid"
 
-EMAIL_FROM = "MHC-H <noreply@mhc.regia.it>"
-EMAIL_SUBJECT = "La tua chiave MHC-H (paid tier)"
+EMAIL_FROM = "MHC <mhcl@micheleloi.pro>"
+EMAIL_SUBJECT = "La tua chiave MHC (paid tier)"
 
 STRIPE_TO_INTERNAL_STATUS = {
     "active": "active",
@@ -107,7 +107,7 @@ Per installare il plugin con la chiave gia' pre-popolata, vai su:
 Sicurezza:
 - La chiave NON e' recuperabile: conservala in luogo sicuro
 - Non condividerla con nessuno (la sottoscrizione e' personale)
-- Per revocare/sostituire: scrivi a noreply@mhc.regia.it
+- Per revocare/sostituire: scrivi a mhcl@micheleloi.pro
 
 La revoca e' immediata: cancellando la sottoscrizione da Stripe la chiave
 viene disattivata al primo refresh del webhook.

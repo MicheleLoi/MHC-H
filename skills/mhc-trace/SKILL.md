@@ -15,8 +15,8 @@ Questa skill realizza la **Rule 3 (Thot)** — *verba volant, scripta manent*: c
 ## Steps
 
 1. Read env var `MHC_BEARER` (set at plugin install).
-   - Se assente: errore *"Bearer key non configurato. Reinstalla il plugin dal welcome page del sito mhc.regia.it."* Stop.
-2. Read env var `MHC_API_BASE` (default `https://api.mhc.regia.it`).
+   - Se assente: errore *"Bearer key non configurato. Reinstalla il plugin dal welcome page del sito micheleloi.pro/accesso/."* Stop.
+2. Read env var `MHC_API_BASE` (default `https://mhc.micheleloi.pro/cowork`).
 3. Recupera `MHC_SID` dal conversation context (impostato da `/mhc-start`).
    - Se assente: comunica all'avvocato *"Nessuna sessione MHC attiva. Digita `/mhc-start` prima."* Stop.
 4. **Rule 2 (Salomone) — surface meaningful choices.** Chiedi all'avvocato: *"Cosa va catturato in questo trace? Aiutami a distinguere — quale insight chiave, quale tensione è stata risolta, quali alternative considerate, quali domande restano aperte."* Attendi risposta.

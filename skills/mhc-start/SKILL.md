@@ -8,15 +8,15 @@ allowed-tools:
 
 # /mhc-start — Apertura sessione MHC
 
-Apre una nuova sessione MHC governata sul backend `api.mhc.regia.it`. Il backend genera un Session ID (SID) univoco, persiste lo stato iniziale, e ritorna l'identificativo che le skill successive (`/mhc-trace`, `/mhc-decision`, `/mhc-end`) useranno come chiave di tracciamento.
+Apre una nuova sessione MHC governata sul backend `mhc.micheleloi.pro/cowork`. Il backend genera un Session ID (SID) univoco, persiste lo stato iniziale, e ritorna l'identificativo che le skill successive (`/mhc-trace`, `/mhc-decision`, `/mhc-end`) useranno come chiave di tracciamento.
 
 Questa skill realizza la **Rule 1 (Gabriele)** — annunciare prima di azioni consequenziali: l'apertura di una sessione governata e l'inizio dell'audit trail vanno dichiarati esplicitamente all'avvocato. Senza SID dichiarato, le skill successive non hanno chiave di correlazione.
 
 ## Steps
 
 1. Read env var `MHC_BEARER` (set at plugin install).
-   - Se assente: errore *"Bearer key non configurato. Reinstalla il plugin dal welcome page del sito mhc.regia.it."* Stop.
-2. Read env var `MHC_API_BASE` (default `https://api.mhc.regia.it`).
+   - Se assente: errore *"Bearer key non configurato. Reinstalla il plugin dal welcome page del sito micheleloi.pro/accesso/."* Stop.
+2. Read env var `MHC_API_BASE` (default `https://mhc.micheleloi.pro/cowork`).
 3. Chiedi all'avvocato: *"Su quale pratica o progetto lavoriamo in questa sessione?"* Attendi risposta breve (es. *"Causa Rossi vs Bianchi"*, *"Parere DPO cliente Alfa"*, *"Revisione contratto fornitore"*). Salva come `project_name`.
 4. Costruisci body JSON: `{"config_json": "{}", "project_name": "<project_name>"}`.
 5. Compute audit signature: `hmac_sha256(MHC_BEARER, body_json)` hex.
